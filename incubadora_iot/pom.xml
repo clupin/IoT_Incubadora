@@ -61,6 +61,11 @@
             <artifactId>telegram-spring-boot-starter</artifactId>
             <version>0.12</version>
         </dependency>
+		<dependency>
+			<groupId>com.github.diegosep</groupId>
+			<artifactId>spring-serial-port-connector</artifactId>
+			<version>0.0.1-RELEASE</version>
+		</dependency>
 	</dependencies>
 
 	<build>
