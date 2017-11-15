@@ -68,14 +68,14 @@ void loop(){
   lcd.write("Holaaa\n");
   //LCD - FIN
 }
-
-void pinsInit(){
-  pinMode(pinPotenciometro, INPUT);
-  pinMode(pinLed,OUTPUT);
-  myservo.attach(pinServo);
-  lcd.begin(16, 2);
-  lcd.setRGB(colorR, colorG, colorB);
-}
+  
+  void pinsInit(){
+    pinMode(pinPotenciometro, INPUT);
+    pinMode(pinLed,OUTPUT);
+    myservo.attach(pinServo);
+    lcd.begin(16, 2);
+    lcd.setRGB(colorR, colorG, colorB);
+  }
 
 /************************************************************************/
 /*Function: Get the angle between the mark and the starting position    */
