@@ -34,12 +34,9 @@ void loop(){
       case '0':  //all
         switch(insPin2){
           case '0':{ //read all
-            float temp = readTemperature();
-            Serial.println(temp);
+            String res = readAll();
+            Serial.println(res);
             break;
-          }
-          case '1':{ //write all
-            break; 
           }
         }
         break;
@@ -89,20 +86,20 @@ void loop(){
             Serial.println(temp);
             break;
           }
-          case '1': {//write temperature
-            writeTemperature(instruction.substring(2,5));
-            break;
-          }
         }
-        break;
-      
-        
-    }
-    
-      
+        break;   
+    } 
   }
 }
 
+String readAll(){
+  int lamp = readLamp();
+  int fan = readFan();
+  int servo = readServo();
+  float temp = readTemperature();
+  String res = String(lamp)+"/"+String(fan)+"/"+String(servo)+"/"+String(temp);
+  return res;
+}
 
 int readLamp(){
   return values[0];
@@ -147,10 +144,6 @@ float readTemperature(){
   R = R0*R;
   float temperature = 1.0/(log(R/R0)/B+1/298.15)-273.15; // convert to temperature via datasheet
   return temperature;
-}
-
-void writeTemperature(String value){
-  //enviar a spring temperatura maxima
 }
 
 void pinsInit(){

@@ -39,6 +39,7 @@ Los dígitos siguientes tienen relación con el valor que se desea enviar, este 
  
 > **Nota:**
 > - Para el caso del sensor de temperatura, no existe la opción de escribir.
+> - Leer todos los sensores, va en formato lampara/ventilador/servomotor/temperatura
 
 #### <i class="icon-file"></i> Informe
 
