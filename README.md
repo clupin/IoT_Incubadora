@@ -38,8 +38,7 @@ El segundo dígito indica la acción que se desea realizar con el sensor indicad
 Los dígitos siguientes tienen relación con el valor que se desea enviar, este puede variar entre 0 y 255.
  
 > **Nota:**
-
-> - Para el caso de escribir en el sensor de temperatura, este debe enviar un mensaje a Java de cual es la temperatura máxima y no "escribir" en el sensor, ya que esto no se realiza en ningún caso.
+> - Para el caso de escribir en el sensor de temperatura, no existe la opción de escribir.
 
 #### <i class="icon-file"></i> Informe
 
