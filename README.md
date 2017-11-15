@@ -38,7 +38,7 @@ El segundo dígito indica la acción que se desea realizar con el sensor indicad
 Los dígitos siguientes tienen relación con el valor que se desea enviar, este puede variar entre 0 y 255.
  
 > **Nota:**
-> - Para el caso de escribir en el sensor de temperatura, no existe la opción de escribir.
+> - Para el caso del sensor de temperatura, no existe la opción de escribir.
 
 #### <i class="icon-file"></i> Informe
 
