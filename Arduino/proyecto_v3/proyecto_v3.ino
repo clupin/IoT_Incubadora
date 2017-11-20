@@ -35,7 +35,7 @@ void loop(){
 				switch(insPin2){
 					case '0':{	//read all
 							String res = readAll();
-							Serial.println(res);
+							Serial.println(String(res)+F("|")+insPin+insPin2);
 							break;
 						}
 				}
@@ -90,6 +90,34 @@ void loop(){
 				break;   
 		} 
 	}
+  printLCD();
+}
+
+void printLCD(){
+  //lcd.clear();
+  //delay(1000);
+  lcd.setCursor(0, 0);
+  int lamp = readLamp();
+  int fan = readFan();
+  int servo = readServo();
+  float temp = readTemperature();
+  lcd.print("L: ");
+  lcd.print(lamp);
+  //ver para que se vea mas bonito
+  lcd.print("   S: ");
+  lcd.print(servo);
+  lcd.print((char)223);
+  lcd.setCursor(0, 1);
+  lcd.print("V: ");
+  if(fan == 1){
+    lcd.print("ON");
+  } else {
+    lcd.print("OFF");
+  }
+  lcd.print(" T");
+  lcd.print((char)223);
+  lcd.print(": ");
+  lcd.print(temp);
 }
 				
 String readAll(){
