@@ -11,8 +11,12 @@ import java.util.TooManyListenersException;
 @Component
 public class SpringSerialPortConnector extends AbstractSpringSerialPortConnector {
 
+    private final IncubadoraBot incubadoraBot;
+
     @Autowired
-    private IncubadoraBot incubadoraBot;
+    public SpringSerialPortConnector(IncubadoraBot incubadoraBot) {
+        this.incubadoraBot = incubadoraBot;
+    }
 
     @PostConstruct
     public void init() throws NoSuchPortException, TooManyListenersException {

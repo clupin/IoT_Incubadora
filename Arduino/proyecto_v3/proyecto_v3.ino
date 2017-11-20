@@ -21,135 +21,135 @@ const int pinServo = 8;           // SERVO DEF - Grove - connect to D8
 int values[] = {0,0,0,0,0};         //{lamp, fan, servo, temp, humidity}
 
 void setup(){
-    Serial.begin(9600);
-    pinsInit();
+	Serial.begin(9600);
+	pinsInit();
 }
 
 void loop(){
-  if (Serial.available() > 0) {
-    String instruction = Serial.readString();
-    char insPin = instruction.charAt(0);
-    char insPin2 = instruction.charAt(1);
-    switch(insPin){
-      case '0':  //all
-        switch(insPin2){
-          case '0':{ //read all
-            String res = readAll();
-            Serial.println(res);
-            break;
-          }
-        }
-        break;
-      case '1': //heat_lamp
-        switch(insPin2){
-          case '0': {//read heat_lamp
-            int lamp = readLamp();
-            Serial.println(lamp);
-            break;
-          }
-          case '1': {//write heat_lamp
-            writeLamp(instruction.substring(2,5));
-            break;
-          }
-        }
-        break;
-      case '2': //fan_state
-        switch(insPin2){
-          case '0': {//read fan_state
-            int fan = readFan();
-            Serial.println(fan);
-            break;
-          }
-          case '1': {//write fan_state
-            writeFan(instruction.charAt(2));
-            break;
-          }
-        }
-        break;
-      case '3': //servo_angle
-        switch(insPin2){
-          case '0': {//read servo_angle
-            int fan = readServo();
-            Serial.println(fan);
-            break;
-          }
-          case '1': {//write servo_angle
-            writeServo(instruction.substring(2,5));
-            break;
-          }
-        }
-        break;
-      case '4': //temperature
-        switch(insPin2){
-          case '0': {//read temperature
-            float temp = readTemperature();
-            Serial.println(temp);
-            break;
-          }
-        }
-        break;   
-    } 
-  }
+	if (Serial.available() > 0) {
+		String instruction = Serial.readString();
+		char insPin = instruction.charAt(0);
+		char insPin2 = instruction.charAt(1);
+		switch(insPin){
+			case '0':  //all
+				switch(insPin2){
+					case '0':{	//read all
+							String res = readAll();
+							Serial.println(res);
+							break;
+						}
+				}
+				break;
+			case '1': //heat_lamp
+				switch(insPin2){
+					case '0': {	//read heat_lamp
+							int lamp = readLamp();
+							Serial.println(String(lamp)+F("|")+insPin+insPin2);
+							break;
+						}
+					case '1': {	//write heat_lamp
+							writeLamp(instruction.substring(2,5));
+							break;
+						}
+				}
+				break;
+			case '2': //fan_state
+				switch(insPin2){
+					case '0': {	//read fan_state
+							int fan = readFan();
+							Serial.println(String(fan)+F("|")+insPin+insPin2);
+							break;
+						}
+					case '1': {	//write fan_state
+							writeFan(instruction.charAt(2));
+							break;
+						}
+				}
+				break;
+			case '3': //servo_angle
+				switch(insPin2){
+					case '0': {	//read servo_angle
+							int fan = readServo();
+							Serial.println(String(fan)+F("|")+insPin+insPin2);
+							break;
+						}
+					case '1': {	//write servo_angle
+							writeServo(instruction.substring(2,5));
+							break;
+						}
+				}
+				break;
+			case '4': //temperature
+				switch(insPin2){
+					case '0': {	//read temperature
+							float temp = readTemperature();
+							Serial.println(String(temp)+F("|")+insPin+insPin2);
+							break;
+						}
+				}
+				break;   
+		} 
+	}
 }
-
+				
 String readAll(){
-  int lamp = readLamp();
-  int fan = readFan();
-  int servo = readServo();
-  float temp = readTemperature();
-  String res = String(lamp)+"/"+String(fan)+"/"+String(servo)+"/"+String(temp);
-  return res;
+	int lamp = readLamp();
+	int fan = readFan();
+	int servo = readServo();
+	float temp = readTemperature();
+	String res = String(lamp)+"/"+String(fan)+"/"+String(servo)+"/"+String(temp);
+	return res;
 }
 
 int readLamp(){
-  return values[0];
+	return values[0];
 }
 
 void writeLamp(String value){
-  int valor = value.toInt();
-  values[0] = valor;
-  analogWrite(pinLed, valor);
+	int valor = value.toInt();
+	values[0] = valor;
+	analogWrite(pinLed, valor);
 }
 
 int readFan(){
-  values[1] = digitalRead(pinVentilador);
-  return values[1];
+	values[1] = digitalRead(pinVentilador);
+	return values[1];
 }
 
 void writeFan(char value){
-  int valor = 0;
-  if(value == '0'){
-    digitalWrite(pinVentilador, LOW);
-  } else {
-    digitalWrite(pinVentilador, HIGH);
-    valor = 1;
-  }
-  values[1] = valor;
+	int valor = 0;
+	if(value == '0'){
+		digitalWrite(pinVentilador, LOW);
+	} else {
+		digitalWrite(pinVentilador, HIGH);
+		valor = 1;
+	}
+	values[1] = valor;
 }
 
 int readServo(){
-  values[2] = myservo.read();
-  return values[2];
+	values[2] = myservo.read();
+	return values[2];
 }
 
 void writeServo(String value){
-  int valor = value.toInt();
-  values[2] = valor;
-  myservo.write(valor);
+	int valor = value.toInt();
+	values[2] = valor;
+	myservo.write(valor);
 }
 
 float readTemperature(){
-  int a = analogRead(pinTempSensor);
-  float R = 1023.0/a-1.0;
-  R = R0*R;
-  float temperature = 1.0/(log(R/R0)/B+1/298.15)-273.15; // convert to temperature via datasheet
-  return temperature;
+	int a = analogRead(pinTempSensor);
+	float R = 1023.0/a-1.0;
+	R = R0*R;
+	float temperature = 1.0/(log(R/R0)/B+1/298.15)-273.15; // convert to temperature via datasheet
+	return temperature;
 }
 
 void pinsInit(){
-  pinMode(pinLed,OUTPUT);
-  pinMode(pinVentilador,OUTPUT);
-  myservo.attach(pinServo);
-  lcd.begin(16, 2);
-  lcd.setRGB(colorR, colorG, colorB);
+	pinMode(pinLed,OUTPUT);
+	pinMode(pinVentilador,OUTPUT);
+	myservo.attach(pinServo);
+	lcd.begin(16, 2);
+	lcd.setRGB(colorR, colorG, colorB);
 }
