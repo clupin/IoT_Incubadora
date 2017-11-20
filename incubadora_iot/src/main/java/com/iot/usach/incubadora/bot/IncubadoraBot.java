@@ -144,6 +144,10 @@ public class IncubadoraBot extends TelegramLongPollingBot {
         String respuesta = mensaje.split("\\|")[0];
         if(operacion.charAt(1) == '0'){
             switch (operacion.charAt(0)){
+                case '0':
+                    String[] estados = respuesta.split("/");
+                    response.setText("Lampara: "+estados[0]+" \nVentilador: "+(Integer.parseInt(estados[1])==0?"Apagado":"Encendido")+" \nBandeja: "+estados[2]+" \nTemperatura: "+estados[3]);
+                    break;
                 // Lampara
                 case '1':
                     response.setReplyMarkup(generarBotones(new String[]{"Apagar","110"}, new String[]{"Encender","11255"}));
