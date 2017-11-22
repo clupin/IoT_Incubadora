@@ -60,6 +60,8 @@ public class IncubadoraBot extends TelegramLongPollingBot {
                             message+="255\n";
                         }else if(arguments[0].equalsIgnoreCase("apagar")){
                             message+="0\n";
+                        } else {
+                            message+=arguments[0]+"\n";
                         }
                         springSerialPortConnector.sendMessage(message);
                     }else{
@@ -109,7 +111,19 @@ public class IncubadoraBot extends TelegramLongPollingBot {
             @Override
             public void execute(AbsSender absSender, User user, Chat chat, String[] arguments) {
                 try {
-                    springSerialPortConnector.sendMessage("40\n");
+                    //guarda temp Max y Min
+                    if(arguments.length > 0){
+                        String message = "41";
+                        if(arguments[0].equals("min")){
+                            message+="1";
+                        } else {
+                            message+="0";
+                        }
+                        message+=arguments[1];
+                        springSerialPortConnector.sendMessage(message);
+                    } else {
+                        springSerialPortConnector.sendMessage("40\n");
+                    }
                 } catch (IOException e) {
                     enviarMensaje(absSender, chat, "Ha ocurrido un error de comunicación con la incubadora");
                 }
@@ -166,6 +180,12 @@ public class IncubadoraBot extends TelegramLongPollingBot {
                 // Temperatura
                 case '4':
                     response.setText("Temperatura: "+respuesta+"º");
+                    break;
+                case '5':
+                    response.setText("Temperatura está muy alta ("+respuesta+"ºC), se ha prendido ventilador y se bajará valor de lámpara");
+                    break;
+                case '6':
+                    response.setText("Temperatura está muy baja ("+respuesta+"ºC), se ha apagado ventilador y se subirá valor de lámpara");
                     break;
                 default:
                     response.setText("Estado:"+respuesta);
