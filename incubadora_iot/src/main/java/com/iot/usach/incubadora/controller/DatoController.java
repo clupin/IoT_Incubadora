@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping("/dato")
@@ -29,27 +31,41 @@ public class DatoController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public int getActualHeatLamp() throws IOException {
-        //falta exception
-
-        //considerado inicialmente con hex
-        try {
-            springSerialPortConnector.sendMessage("00");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return 0;
+    public List<Dato> findAll() throws IOException {
+        return datoRepository.findAll();
     }
+
+    @RequestMapping(value = "/heatLamp", method = RequestMethod.GET)
+    public List<Dato> findLamp() {
+        return datoRepository.findLamp();
+    }
+
+    @RequestMapping(value = "/fanState", method = RequestMethod.GET)
+    public List<Dato> findFan() {
+        return datoRepository.findFan();
+    }
+
+    @RequestMapping(value = "/servoAngle", method = RequestMethod.GET)
+    public List<Dato> findServo() {
+        return datoRepository.findServo();
+    }
+
+    @RequestMapping(value = "/temperature", method = RequestMethod.GET)
+    public List<Dato> findTemp() {
+        return datoRepository.findTemp();
+    }
+
+
 
     @RequestMapping(method = RequestMethod.POST)
     public void addDato(@RequestBody AddDatoRequest addDatoRequest) {
         Dato dato = new Dato();
+        Date date = new Date();
         dato.setHeat_lamp(addDatoRequest.getHeat_lamp());
         dato.setFan_state(addDatoRequest.getFan_state());
-        dato.setHumidity(addDatoRequest.getHumidity());
         dato.setServo_angle(addDatoRequest.getServo_angle());
         dato.setTemperature(addDatoRequest.getTemperature());
+        dato.setDate(date);
         datoRepository.save(dato);
     }
 

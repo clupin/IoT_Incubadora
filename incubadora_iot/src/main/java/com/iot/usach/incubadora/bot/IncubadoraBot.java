@@ -2,6 +2,8 @@ package com.iot.usach.incubadora.bot;
 
 import com.iot.usach.incubadora.bot.commands.BotCommand;
 import com.iot.usach.incubadora.bot.commands.CommandManager;
+import com.iot.usach.incubadora.controller.DatoController;
+import com.iot.usach.incubadora.entity.request.AddDatoRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +34,9 @@ public class IncubadoraBot extends TelegramLongPollingBot {
 
     @Autowired
     private SpringSerialPortConnector springSerialPortConnector;
+
+    @Autowired
+    private DatoController datoController;
 
     @Value("${bot.token}")
     private String token;
@@ -161,6 +166,7 @@ public class IncubadoraBot extends TelegramLongPollingBot {
                 case '0':
                     String[] estados = respuesta.split("/");
                     response.setText("Lampara: "+estados[0]+" \nVentilador: "+(Integer.parseInt(estados[1])==0?"Apagado":"Encendido")+" \nBandeja: "+estados[2]+" \nTemperatura: "+estados[3]);
+                    saveData(estados);
                     break;
                 // Lampara
                 case '1':
@@ -224,7 +230,7 @@ public class IncubadoraBot extends TelegramLongPollingBot {
                         break;
                     // Ventilador
                     case '2':
-                        answer.setText("Ventildaor "+( Integer.parseInt(msg.substring(2)) == 0?"Apagado":"Encendido" ));
+                        answer.setText("Ventilador "+( Integer.parseInt(msg.substring(2)) == 0?"Apagado":"Encendido" ));
                         springSerialPortConnector.sendMessage("20\n");
                         break;
                     // Bandeja
@@ -264,6 +270,25 @@ public class IncubadoraBot extends TelegramLongPollingBot {
     @Override
     public String getBotToken() {
         return this.token;
+    }
+
+    public boolean parseStringToBoolean(String value){
+        if (value.equals("0")){
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public void saveData(String[] estados){
+        AddDatoRequest addDatoRequest = new AddDatoRequest();
+        addDatoRequest.setHeat_lamp(Integer.parseInt(estados[0]));
+        addDatoRequest.setFan_state(parseStringToBoolean(estados[1]));
+        addDatoRequest.setServo_angle(Integer.parseInt(estados[2]));
+        addDatoRequest.setTemperature(Float.parseFloat(estados[3]));
+        System.out.println("intentando guardar");
+        System.out.println(addDatoRequest);
+        datoController.addDato(addDatoRequest);
     }
 
     /*

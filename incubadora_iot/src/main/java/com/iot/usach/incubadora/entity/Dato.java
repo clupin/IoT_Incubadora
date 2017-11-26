@@ -3,6 +3,7 @@ package com.iot.usach.incubadora.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Entity
 public class Dato {
@@ -17,9 +18,9 @@ public class Dato {
 
     private int servo_angle;
 
-    private float humidity;
-
     private float temperature;
+
+    private Date date;
 
     public long getId() {
         return id;
@@ -53,14 +54,6 @@ public class Dato {
         this.servo_angle = servo_angle;
     }
 
-    public float getHumidity() {
-        return humidity;
-    }
-
-    public void setHumidity(float humidity) {
-        this.humidity = humidity;
-    }
-
     public float getTemperature() {
         return temperature;
     }
@@ -69,4 +62,11 @@ public class Dato {
         this.temperature = temperature;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 }

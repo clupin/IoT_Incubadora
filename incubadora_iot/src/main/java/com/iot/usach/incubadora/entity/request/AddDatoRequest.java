@@ -1,11 +1,13 @@
 package com.iot.usach.incubadora.entity.request;
 
+import java.util.Date;
+
 public class AddDatoRequest {
     private int heat_lamp;
     private boolean fan_state;
     private int servo_angle;
-    private float humidity;
     private float temperature;
+    private Date date;
 
     public int getHeat_lamp() {
         return heat_lamp;
@@ -31,19 +33,19 @@ public class AddDatoRequest {
         this.servo_angle = servo_angle;
     }
 
-    public float getHumidity() {
-        return humidity;
-    }
-
-    public void setHumidity(float humidity) {
-        this.humidity = humidity;
-    }
-
     public float getTemperature() {
         return temperature;
     }
 
     public void setTemperature(float temperature) {
         this.temperature = temperature;
+    }
+
+    public void setDate(Date date){
+        this.date = date;
+    }
+
+    public Date getDate(){
+        return date;
     }
 }
