@@ -85,11 +85,9 @@ Las rutas posibles para esta API son:
 
 ```json
 [
-	{
-		8
-	},{
-		9
-	}
+	8
+	,
+	9
 ] 
 ```
 
@@ -99,11 +97,9 @@ Las rutas posibles para esta API son:
 
 ```json
 [
-	{
-		true
-	},{
-		true
-	}
+	true
+	,
+	true
 ]   
 ```
 
@@ -113,11 +109,9 @@ Las rutas posibles para esta API son:
 
 ```json
 [
-	{
-		93
-	},{
-		93
-	}
+	93
+	,
+	93
 ] 
 ```
 
@@ -127,11 +121,9 @@ Las rutas posibles para esta API son:
 
 ```json
 [
-	{
-		50.0
-	},{
-		64.26
-	}
+	50.0
+	,
+	64.26
 ]
 ```
 
