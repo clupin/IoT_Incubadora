@@ -96,23 +96,22 @@ Las rutas posibles para esta API son:
 - Obtener lista de todos los valores de Ventilador
 <p>@GET</p>
 <p>/dato/fanState</p>
-```json
 
+```json
 [
 	{
 		true
 	},{
 		true
 	}
-]
-    
+]   
 ```
 
 - Obtener lista de todos los valores de Bandeja
 <p>@GET</p>
 <p>/dato/servoAngle</p>
-```json
 
+```json
 [
 	{
 		93
@@ -120,22 +119,20 @@ Las rutas posibles para esta API son:
 		93
 	}
 ] 
-
 ```
 
 - Obtener lista de todos los valores de Temperatura
 <p>@GET</p>
 <p>/dato/temperature</p>
-```json
 
+```json
 [
 	{
 		50.0
 	},{
 		64.26
 	}
-] 
-
+]
 ```
 
 
