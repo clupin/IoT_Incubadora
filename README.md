@@ -58,7 +58,8 @@ Las rutas posibles para esta API son:
 - Obtener lista de todos los datos
 <p>@GET</p>
 <p>/dato</p>
-```
+
+```json
 
 [
 	{
