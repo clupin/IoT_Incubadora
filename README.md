@@ -84,6 +84,7 @@ Las rutas posibles para esta API son:
 <p>@GET</p>
 <p>/dato/heatLamp</p>
 ```json
+
 [
 	{
 		8
@@ -91,12 +92,14 @@ Las rutas posibles para esta API son:
 		9
 	}
 ] 
+
 ```
 
 - Obtener lista de todos los valores de Ventilador
 <p>@GET</p>
 <p>/dato/fanState</p>
 ```json
+
 [
 	{
 		true
@@ -111,6 +114,7 @@ Las rutas posibles para esta API son:
 <p>@GET</p>
 <p>/dato/servoAngle</p>
 ```json
+
 [
 	{
 		93
@@ -118,12 +122,14 @@ Las rutas posibles para esta API son:
 		93
 	}
 ] 
+
 ```
 
 - Obtener lista de todos los valores de Temperatura
 <p>@GET</p>
 <p>/dato/temperature</p>
 ```json
+
 [
 	{
 		50.0
@@ -131,6 +137,7 @@ Las rutas posibles para esta API son:
 		64.26
 	}
 ] 
+
 ```
 
 
