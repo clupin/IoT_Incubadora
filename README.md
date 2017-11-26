@@ -59,6 +59,7 @@ Las rutas posibles para esta API son:
 <p>@GET</p>
 <p>/dato</p>
 ```json
+
 [
 	{
 		"id":1,
