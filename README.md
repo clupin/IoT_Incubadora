@@ -76,6 +76,7 @@ Las rutas posibles para esta API son:
 		"date":1511725562996
 	}
 ]
+
 ```
 
 - Obtener lista de todos los valores de Heat Lamp
