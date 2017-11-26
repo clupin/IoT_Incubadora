@@ -88,8 +88,7 @@ Las rutas posibles para esta API son:
 	},{
 		9
 	}
-]
-    
+] 
 ```
 
 - Obtener lista de todos los valores de Ventilador
