@@ -60,7 +60,6 @@ Las rutas posibles para esta API son:
 <p>/dato</p>
 
 ```json
-
 [
 	{
 		"id":1,
@@ -78,14 +77,13 @@ Las rutas posibles para esta API son:
 		"date":1511725562996
 	}
 ]
-
 ```
 
 - Obtener lista de todos los valores de Heat Lamp
 <p>@GET</p>
 <p>/dato/heatLamp</p>
-```json
 
+```json
 [
 	{
 		8
@@ -93,7 +91,6 @@ Las rutas posibles para esta API son:
 		9
 	}
 ] 
-
 ```
 
 - Obtener lista de todos los valores de Ventilador
