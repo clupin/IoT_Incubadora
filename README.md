@@ -143,4 +143,14 @@ El documento del informe se encuentra en el Drive del grupo, disponible también
 
 ### Conexion
 
-![Conexion de grove shield](https://raw.githubusercontent.com/clupin/IoT_Incubadora/master/Arduino/%C3%ADndice.png?token=AIbrix3JjXYh6LtlqLvEn8PYWA-CV6WGks5aFOxrwA%3D%3D "Conexion de grove shield")
+![Conexion de grove shield](https://raw.githubusercontent.com/clupin/IoT_Incubadora/master/Arduino/%C3%ADndice.png?token=AIbri6QNaXVb0nGDNumGov3Mu3AYlgD9ks5aJMcDwA%3D%3D "Conexion de grove shield")
+
+
+----------
+
+
+
+### Video
+
+goo.gl/hzDNRa
+
